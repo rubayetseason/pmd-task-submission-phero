@@ -2,6 +2,7 @@
 import React from "react";
 import { Layout, Menu } from "antd";
 import { SidebarItems } from "@/constants/sidebarItems";
+import Link from "next/link";
 // import { SidebarItems } from "@/constants/sidebarItems";
 // import { getUserInfo } from "@/services/auth.services";
 
@@ -26,20 +27,22 @@ const Sidebar = () => {
         zIndex: 9999,
       }}
     >
-      <div
-        className="text-white"
-        style={{
-          fontSize: "1.35rem",
-          textAlign: "center",
-          fontWeight: "bold",
-          marginBottom: "1rem",
-          marginTop: "1rem",
-        }}
-      >
-        Dashboard
-      </div>
+      <Link href="/dashboard">
+        <div
+          className="text-white"
+          style={{
+            fontSize: "1.35rem",
+            textAlign: "center",
+            fontWeight: "bold",
+            marginBottom: "1rem",
+            marginTop: "1rem",
+          }}
+        >
+          Dashboard
+        </div>
+      </Link>
       <Menu
-        // theme="dark"
+        theme="dark"
         style={{
           backgroundColor: "#18181B",
         }}

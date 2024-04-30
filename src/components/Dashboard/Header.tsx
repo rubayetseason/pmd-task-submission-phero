@@ -57,7 +57,7 @@ const Header = () => {
           paddingRight: "10px",
         }}
       >
-        <button className="bg-red-600 px-3 py-[0.4rem] text-base text-white rounded-md">
+        <button className="bg-red-600 hover:bg-red-700 px-3 py-[0.4rem] text-base text-white rounded-md">
           Sign Out
         </button>
       </Row>
