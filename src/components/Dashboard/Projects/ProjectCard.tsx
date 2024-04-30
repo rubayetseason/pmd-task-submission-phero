@@ -3,8 +3,10 @@
 import { useState } from "react";
 import EditProjectModal from "./EditProjectModal";
 import DeleteProjectModal from "./DeleteModal";
+import { ProjectType } from "@/types/types";
+import Link from "next/link";
 
-const ProjectCard = () => {
+const ProjectCard = ({ project }: { project: ProjectType }) => {
   const [open, setOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -18,15 +20,16 @@ const ProjectCard = () => {
 
   return (
     <div className="p-5 border-[1px] border-gray-300 rounded-md">
-      <h1 className="text-2xl font-bold">Project Name</h1>
+      <h1 className="text-2xl font-bold">{project?.name}</h1>
       <p className="pt-1 text-gray-500 text-base font-normal">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minus,
-        quaerat?
+        {project?.description}
       </p>
       <div className="pt-3 flex items-center gap-2">
-        <button className="px-4 py-2 text-white bg-[#18181B] hover:bg-black rounded-md text-base font-medium">
-          View
-        </button>
+        <Link href={`/dashboard/project/${project?.id}`}>
+          <button className="px-4 py-2 text-white bg-[#18181B] hover:bg-black rounded-md text-base font-medium">
+            View
+          </button>
+        </Link>
         <button
           onClick={showModal}
           className="px-4 py-2 text-white bg-[#18181B] hover:bg-black rounded-md text-base font-medium"
