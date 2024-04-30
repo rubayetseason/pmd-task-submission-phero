@@ -1,23 +1,50 @@
 "use client";
 
-import { Modal } from "antd";
+import { ProjectType } from "@/types/types";
+import { Modal, Form, Input } from "antd";
 import React from "react";
 
 interface EditProjectModalProps {
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  project?: ProjectType;
+  onSubmit: (updatedProject: ProjectType) => void;
 }
 
 const EditProjectModal: React.FC<EditProjectModalProps> = ({
   open,
   setOpen,
+  project,
+  onSubmit,
 }) => {
+  const [form] = Form.useForm();
+
+  React.useEffect(() => {
+    if (project) {
+      form.setFieldsValue({
+        name: project.name,
+        description: project.description,
+      });
+    }
+  }, [project, form]);
+
   const handleOk = () => {
-    setOpen(false);
+    form
+      .validateFields()
+      .then((values) => {
+        const updatedProject = {
+          ...project,
+          ...values,
+        };
+        onSubmit(updatedProject);
+        setOpen(false);
+      })
+      .catch(() => {
+        console.error("Failed form validation");
+      });
   };
 
   const handleCancel = () => {
-    console.log("Clicked cancel button");
     setOpen(false);
   };
 
@@ -37,26 +64,18 @@ const EditProjectModal: React.FC<EditProjectModalProps> = ({
         style: { backgroundColor: "#18181B", color: "white" },
       }}
     >
-      <form>
-        <label htmlFor="title">Project Title</label>
-        <input
-          className="w-full py-2 px-5 border-[1px] border-gray-300 rounded-md focus:outline-none"
-          type="text"
-          placeholder="Project Title"
-          name="title"
-          id="title"
-        />
-        <div className="py-3">
-          <label htmlFor="description">Project Description</label>
-          <input
-            className="w-full py-2 px-5 border-[1px] border-gray-300 rounded-md focus:outline-none"
-            type="text"
-            placeholder="Project Description"
-            name="description"
-            id="description"
-          />
-        </div>
-      </form>
+      <Form form={form} layout="vertical">
+        <Form.Item
+          label="Project Title"
+          name="name"
+          rules={[{ required: true, message: "Please enter a project title" }]}
+        >
+          <Input placeholder="Project Title" />
+        </Form.Item>
+        <Form.Item label="Project Description" name="description">
+          <Input.TextArea placeholder="Project Description" rows={4} />
+        </Form.Item>
+      </Form>
     </Modal>
   );
 };

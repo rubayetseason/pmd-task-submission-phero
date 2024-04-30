@@ -5,8 +5,11 @@ import EditProjectModal from "./EditProjectModal";
 import DeleteProjectModal from "./DeleteModal";
 import { ProjectType } from "@/types/types";
 import Link from "next/link";
+import { useProjectStore } from "@/zustand/projectStore";
 
 const ProjectCard = ({ project }: { project: ProjectType }) => {
+  const updateProject = useProjectStore((state) => state.updateProject);
+
   const [open, setOpen] = useState(false);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -16,6 +19,11 @@ const ProjectCard = ({ project }: { project: ProjectType }) => {
 
   const showDeleleModal = () => {
     setIsModalOpen(true);
+  };
+
+  const handleProjectSubmit = (updatedProject: ProjectType) => {
+    console.log("Submitted project data:", updatedProject);
+    updateProject(updatedProject);
   };
 
   return (
@@ -43,7 +51,12 @@ const ProjectCard = ({ project }: { project: ProjectType }) => {
           Delete
         </button>
       </div>
-      <EditProjectModal open={open} setOpen={setOpen} />
+      <EditProjectModal
+        open={open}
+        setOpen={setOpen}
+        project={project}
+        onSubmit={handleProjectSubmit}
+      />
       <DeleteProjectModal
         isModalOpen={isModalOpen}
         setIsModalOpen={setIsModalOpen}
