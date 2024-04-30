@@ -1,25 +1,28 @@
-// import { ProjectType } from "@/types/types";
-// import { create } from "zustand";
+import { ProjectType } from "@/types/types";
+import { create } from "zustand";
 
-// import { devtools, persist } from "zustand/middleware";
+type ProjectStoreType = {
+  projects: ProjectType[];
+  addProject: (newProjects: ProjectType[]) => void;
+  updateProject: (updatedProject: ProjectType) => void;
+  deleteProject: (projectId: string) => void;
+};
 
-// const projectStore = (set: any) => ({
-//   allProjects: [],
-//   deleteProject: (projectId: string) => {
-//     set((state: any) => ({
-//       projects: state.projects.filter(
-//         (project: ProjectType) => project.id !== projectId
-//       ),
-//     }));
-//   },
-// });
-
-// const useProjectStore = create(
-//   devtools(
-//     persist(projectStore, {
-//       name: "projectStore",
-//     })
-//   )
-// );
-
-// export default useProjectStore;
+export const useProjectStore = create<ProjectStoreType>((set) => ({
+  projects: [],
+  addProject(newProjects: ProjectType[]) {
+    set({ projects: newProjects });
+  },
+  updateProject(updatedProject: ProjectType) {
+    set((state) => ({
+      projects: state.projects.map((project) =>
+        project.id === updatedProject.id ? updatedProject : project
+      ),
+    }));
+  },
+  deleteProject(projectId: string) {
+    set((state) => ({
+      projects: state.projects.filter((project) => project.id !== projectId),
+    }));
+  },
+}));

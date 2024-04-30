@@ -2,10 +2,17 @@
 
 import { LockOutlined, UserOutlined, SlackOutlined } from "@ant-design/icons";
 import { Button, Checkbox, Form, Input } from "antd";
+import { toast } from "sonner";
 
 const Login = () => {
   const onFinish = (values: any) => {
     console.log("Received values of form: ", values);
+
+    if (values.username === "sampleuser" && values.password === "password123") {
+      window.location.href = "/dashboard";
+    } else {
+      toast.error("Invalid username or password");
+    }
   };
 
   return (
@@ -27,9 +34,9 @@ const Login = () => {
           </div>
           <div className="text-xl text-white">
             <h1 className="text-xl text-white py-5 px-3">
-              Sample Username: asdasd
+              Sample Username: sampleuser
               <br />
-              Sample Password: asdasd
+              Sample Password: password123
             </h1>
           </div>
         </div>
