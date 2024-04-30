@@ -47,6 +47,7 @@ const ProjectCard = ({ project }: { project: ProjectType }) => {
       <DeleteProjectModal
         isModalOpen={isModalOpen}
         setIsModalOpen={setIsModalOpen}
+        projectId={project?.id}
       />
     </div>
   );

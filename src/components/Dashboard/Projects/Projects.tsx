@@ -29,12 +29,17 @@ const Projects = () => {
 
   return (
     <div className="py-7 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
-      {projects &&
-        projectData?.map((project: ProjectType) => (
-          <div key={project.id}>
-            <ProjectCard project={project} />
-          </div>
-        ))}
+      {projectData && projectData.length > 0 ? (
+        projectData.map((project: ProjectType) => (
+          <ProjectCard key={project.id} project={project} />
+        ))
+      ) : (
+        <div>
+          <h1 className="text-2xl font-bold text-red-600">
+            Oops! No data avilable
+          </h1>
+        </div>
+      )}
     </div>
   );
 };
