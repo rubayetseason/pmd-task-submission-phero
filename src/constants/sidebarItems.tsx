@@ -6,7 +6,7 @@ export const SidebarItems = () => {
   const projectManagementSidebarItems: MenuProps["items"] = [
     {
       label: (
-        <Link href={`/asdasdasd/admin`}>
+        <Link href={`/dashboard/projects`}>
           <h1 className="text-lg font-semibold text-white">Projects</h1>
         </Link>
       ),
@@ -16,11 +16,11 @@ export const SidebarItems = () => {
           className="text-xl"
         />
       ),
-      key: `/asdasdasd/admin`,
+      key: `/dashboard/projects`,
     },
     {
       label: (
-        <Link href={`/asdasdasd/user`}>
+        <Link href={`/dashboard/tasks`}>
           {" "}
           <h1 className="text-lg text-white font-semibold my-4">Tasks</h1>
         </Link>
@@ -31,7 +31,7 @@ export const SidebarItems = () => {
           className="text-xl"
         />
       ),
-      key: `/asdasdasd/user`,
+      key: `/dashboard/tasks`,
     },
   ];
 
