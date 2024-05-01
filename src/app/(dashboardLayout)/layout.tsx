@@ -10,20 +10,20 @@ import Contents from "@/components/Dashboard/Contents";
 
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   const router = useRouter();
-  // const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  // const userLoggedIn = isLoggedIn();
+  const isAccessTokenAvailable = localStorage.getItem("antd_token");
 
-  // useEffect(() => {
-  //   if (!userLoggedIn) {
-  //     router.push("/");
-  //   }
-  //   setIsLoading(true);
-  // }, [router, userLoggedIn]);
+  useEffect(() => {
+    if (!isAccessTokenAvailable) {
+      router.push("/");
+    }
+    setIsLoading(true);
+  }, [router, isAccessTokenAvailable]);
 
-  // if (!isLoading) {
-  //   return <Loading></Loading>;
-  // }
+  if (!isLoading) {
+    return <Loading></Loading>;
+  }
 
   return (
     <Layout style={{ minHeight: "100vh" }} hasSider>

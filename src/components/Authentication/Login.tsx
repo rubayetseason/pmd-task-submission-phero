@@ -2,12 +2,18 @@
 
 import { LockOutlined, UserOutlined, SlackOutlined } from "@ant-design/icons";
 import { Button, Checkbox, Form, Input, Tooltip } from "antd";
+import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 
 const Login = () => {
+  const router = useRouter();
+
   const onFinish = (values: any) => {
     if (values.username === "sampleuser" && values.password === "password123") {
-      window.location.href = "/dashboard";
+      const secretToken = "secretToken123";
+      localStorage.setItem("antd_token", secretToken);
+      toast.success("Login successful");
+      router.push("/dashboard");
     } else {
       toast.error("Invalid username or password");
     }
@@ -81,12 +87,14 @@ const Login = () => {
               </div>
 
               <Form.Item>
-                <button
-                  type="submit"
-                  className="login-form-button w-full bg-[#18181B] py-2 text-white rounded-md font-medium"
-                >
-                  Sign In
-                </button>
+                <Tooltip title="Sign In" placement="bottom">
+                  <button
+                    type="submit"
+                    className="login-form-button w-full bg-[#18181B] py-2 text-white rounded-md font-medium"
+                  >
+                    Sign In
+                  </button>
+                </Tooltip>
               </Form.Item>
             </Form>
           </div>

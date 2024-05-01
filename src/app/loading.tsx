@@ -1,7 +1,7 @@
 const Loading = () => {
   return (
-    <div className="h-screem w-full flex justify-center items-center">
-      <h1 className="text-3xl font-bold text-center h-full">Loading...</h1>
+    <div className="h-screen w-full bg-black flex justify-center items-center">
+      <div className="loaderSpinner"></div>
     </div>
   );
 };
