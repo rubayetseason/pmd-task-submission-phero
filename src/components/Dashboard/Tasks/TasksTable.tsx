@@ -6,6 +6,7 @@ import TaskEditModal from "./TaskEditModal";
 import { useState } from "react";
 import { toast } from "sonner";
 import { DatePicker, DatePickerProps } from "antd";
+import { useDebounced } from "@/hooks/useDebounced";
 
 const TasksTable = () => {
   const editTask = useProjectStore((state) => state.editTask);
@@ -38,41 +39,82 @@ const TasksTable = () => {
     setSelectedDate(dateString);
   };
 
+  const filteredTasksByDate =
+    selectedDate && taskData?.filter((task) => task.deadline === selectedDate);
+
+  // search related logic
+  const [inputValue, setInputValue] = useState("");
+
+  const debouncedSearchQuery = useDebounced({
+    searchQuery: inputValue,
+    delay: 300,
+  });
+
+  const handleSearchInputChange = (event: any) => {
+    setInputValue(event.target.value);
+  };
+
+  // status filer logic
+  const [selectedStatus, setSelectedStatus] = useState("");
+
+  // Function to handle status change
+  const handleStatusChange = (event: any) => {
+    setSelectedStatus(event.target.value);
+  };
+
+  // Function to filter tasks based on status
+  const filteredTasksByStatus =
+    taskData &&
+    taskData?.filter(
+      (task) => selectedStatus === "" || task.status === selectedStatus
+    );
+
+  const filteredTasks =
+    filteredTasksByStatus &&
+    filteredTasksByStatus
+      .filter((task) =>
+        task.taskName.toLowerCase().includes(debouncedSearchQuery.toLowerCase())
+      )
+      .filter((task) => selectedDate === "" || task.deadline === selectedDate);
+
   return (
     <div>
-      <form>
-        <div className="flex items-center gap-5">
-          <div>
-            <input
-              id="taskName"
-              name="taskName"
-              className="px-5 py-2 text-[#18181B] bg-white placeholder-gray-400 hover:bg-white rounded-md text-base font-medium outline-none border-[1px] border-gray-300"
-              type="text"
-              placeholder="Search Task Name"
-            />
-          </div>
-          <div>
-            <select
-              className="px-5 py-2 text-[#18181B] bg-white placeholder-gray-400 hover:bg-white rounded-md text-base font-medium outline-none border-[1px] border-gray-300"
-              name="status"
-              id="status"
-            >
-              <option value="incomplete">Incomplete</option>
-              <option value="in progress">In Progress</option>
-              <option value="done">Done</option>
-            </select>
-          </div>
-          <DatePicker
+      <div className="flex items-center gap-5">
+        <div>
+          <input
+            id="taskName"
+            name="taskName"
             className="px-5 py-2 text-[#18181B] bg-white placeholder-gray-400 hover:bg-white rounded-md text-base font-medium outline-none border-[1px] border-gray-300"
-            onChange={onChange}
+            type="text"
+            placeholder="Search Task Name"
+            value={inputValue}
+            onChange={handleSearchInputChange}
           />
-          <button className="px-5 py-2 text-white bg-[#18181B] hover:bg-black rounded-md text-base font-medium">
-            Filters
-          </button>
         </div>
-      </form>
+        <div>
+          <select
+            className="px-5 py-2 text-[#18181B] bg-white placeholder-gray-400 hover:bg-white rounded-md text-base font-medium outline-none border-[1px] border-gray-300"
+            name="status"
+            id="status"
+            value={selectedStatus}
+            onChange={handleStatusChange}
+          >
+            <option value="" defaultChecked>
+              Select Status
+            </option>
+            <option value="incomplete">Incomplete</option>
+            <option value="in progress">In Progress</option>
+            <option value="done">Done</option>
+          </select>
+        </div>
+        <DatePicker
+          className="px-5 py-2 text-[#18181B] bg-white placeholder-gray-400 hover:bg-white rounded-md text-base font-medium outline-none border-[1px] border-gray-300"
+          onChange={onChange}
+        />
+      </div>
+
       <div className="pt-9 overflow-x-auto sm:overflow-x-visible">
-        {taskData && taskData.length > 0 ? (
+        {filteredTasks && filteredTasks.length > 0 ? (
           <div>
             {" "}
             <table className="table-auto w-full">
@@ -96,8 +138,8 @@ const TasksTable = () => {
                 </tr>
               </thead>
               <tbody>
-                {taskData &&
-                  taskData.map((task: TaskType) => (
+                {filteredTasks &&
+                  filteredTasks.map((task: TaskType) => (
                     <tr
                       key={task.id}
                       className="border-b border-gray-200 hover:bg-gray-100"
