@@ -1,12 +1,13 @@
 "use client";
-import { useRouter } from "next/router";
 
-const NotFoundPage = () => {
+import { useRouter } from "next/navigation";
+
+const ErrorPage = () => {
   const router = useRouter();
 
   return (
     <div className="flex flex-col justify-center items-center h-screen">
-      <h2 className="text-2xl font-bold">Page not found!</h2>
+      <h2 className="text-2xl font-bold">Something went wrong!</h2>
       <button
         onClick={() => {
           router.push("/dashboard");
@@ -19,4 +20,4 @@ const NotFoundPage = () => {
   );
 };
 
-export default NotFoundPage;
+export default ErrorPage;
