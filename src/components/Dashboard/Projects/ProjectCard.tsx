@@ -6,6 +6,7 @@ import DeleteProjectModal from "./DeleteModal";
 import { ProjectType } from "@/types/types";
 import Link from "next/link";
 import { useProjectStore } from "@/zustand/projectStore";
+import { Tooltip } from "antd";
 
 const ProjectCard = ({ project }: { project: ProjectType }) => {
   const updateProject = useProjectStore((state) => state.updateProject);
@@ -22,13 +23,14 @@ const ProjectCard = ({ project }: { project: ProjectType }) => {
   };
 
   const handleProjectSubmit = (updatedProject: ProjectType) => {
-    
     updateProject(updatedProject);
   };
 
   return (
     <div className="p-5 border-[1px] border-gray-300 rounded-md">
-      <h1 className="text-2xl font-bold">{project?.name}</h1>
+      <Tooltip title={project.name}>
+        <h1 className="text-2xl font-bold">{project?.name}</h1>
+      </Tooltip>
       <p className="pt-1 text-gray-500 text-base font-normal">
         {project?.description}
       </p>

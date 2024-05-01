@@ -1,7 +1,7 @@
 "use client";
 
 import { ProjectType, TaskType } from "@/types/types";
-import { DatePicker } from "antd";
+import { DatePicker, Tooltip } from "antd";
 import { motion } from "framer-motion";
 import React, { Dispatch, DragEvent, SetStateAction, useState } from "react";
 import { FaFire } from "react-icons/fa";
@@ -295,18 +295,20 @@ const BurnBarrel = ({
   };
 
   return (
-    <div
-      onDrop={handleDragEnd}
-      onDragOver={handleDragOver}
-      onDragLeave={handleDragLeave}
-      className={`mx-3 mt-9 grid h-56 w-56 shrink-0 place-content-center rounded border text-3xl ${
-        active
-          ? "border-red-800 bg-red-800/20 text-red-500"
-          : "border-neutral-500 bg-neutral-500/20 text-neutral-500"
-      }`}
-    >
-      {active ? <FaFire className="animate-bounce" /> : <FiTrash />}
-    </div>
+    <Tooltip title="Delete Task">
+      <div
+        onDrop={handleDragEnd}
+        onDragOver={handleDragOver}
+        onDragLeave={handleDragLeave}
+        className={`mx-3 mt-9 grid h-56 w-56 shrink-0 place-content-center rounded border text-3xl ${
+          active
+            ? "border-red-800 bg-red-800/20 text-red-500"
+            : "border-neutral-500 bg-neutral-500/20 text-neutral-500"
+        }`}
+      >
+        {active ? <FaFire className="animate-bounce" /> : <FiTrash />}
+      </div>
+    </Tooltip>
   );
 };
 
@@ -422,7 +424,9 @@ const AddCard = ({ column, setCards }: AddCardProps) => {
           onClick={() => setAdding(true)}
           className="flex w-full items-center gap-1.5 px-3 py-1.5 text-xs text-neutral-400 transition-colors hover:text-neutral-50"
         >
-          <span>Add card</span>
+          <Tooltip title="Add New Task" placement="bottom">
+            <span>Add card</span>
+          </Tooltip>
           <FiPlus />
         </motion.button>
       )}

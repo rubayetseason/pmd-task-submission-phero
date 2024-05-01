@@ -1,10 +1,10 @@
 "use client";
 
-import { useQuery } from "@tanstack/react-query";
-import ProjectCard from "./ProjectCard";
 import { ProjectType } from "@/types/types";
 import { useProjectStore } from "@/zustand/projectStore";
+import { useQuery } from "@tanstack/react-query";
 import LoadingCards from "./LoadingCards";
+import ProjectCard from "./ProjectCard";
 
 const Projects = () => {
   const addProject = useProjectStore((state) => state.addProject);

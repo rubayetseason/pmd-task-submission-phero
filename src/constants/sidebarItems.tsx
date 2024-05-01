@@ -1,5 +1,5 @@
+import { ProjectOutlined } from "@ant-design/icons";
 import type { MenuProps } from "antd";
-import { ProjectOutlined, HighlightOutlined } from "@ant-design/icons";
 import Link from "next/link";
 
 export const SidebarItems = () => {

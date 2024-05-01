@@ -1,12 +1,11 @@
 "use client";
 
 import { LockOutlined, UserOutlined, SlackOutlined } from "@ant-design/icons";
-import { Button, Checkbox, Form, Input } from "antd";
+import { Button, Checkbox, Form, Input, Tooltip } from "antd";
 import { toast } from "sonner";
 
 const Login = () => {
   const onFinish = (values: any) => {
-    
     if (values.username === "sampleuser" && values.password === "password123") {
       window.location.href = "/dashboard";
     } else {
@@ -22,13 +21,15 @@ const Login = () => {
             <h1 className="text-xl text-white py-5 px-3">
               <SlackOutlined className="site-form-item-icon mr-1 text-2xl" />{" "}
               Project Management Dashboard by{" "}
-              <a
-                href="https://rubayet-islam-portfolio.netlify.app/"
-                target="_blank"
-                className="underline underline-offset-[5px]"
-              >
-                Season
-              </a>
+              <Tooltip title="View Portfolio" placement="bottom">
+                <a
+                  href="https://rubayet-islam-portfolio.netlify.app/"
+                  target="_blank"
+                  className="underline underline-offset-[5px]"
+                >
+                  Season
+                </a>
+              </Tooltip>
             </h1>
           </div>
           <div className="text-xl text-white">

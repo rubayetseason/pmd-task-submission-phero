@@ -5,7 +5,7 @@ import { useProjectStore } from "@/zustand/projectStore";
 import TaskEditModal from "./TaskEditModal";
 import { useState } from "react";
 import { toast } from "sonner";
-import { DatePicker, DatePickerProps } from "antd";
+import { DatePicker, DatePickerProps, Tooltip } from "antd";
 import { useDebounced } from "@/hooks/useDebounced";
 
 const TasksTable = () => {
@@ -64,37 +64,43 @@ const TasksTable = () => {
   return (
     <div>
       <div className="flex items-center gap-5">
-        <div>
-          <input
-            id="taskName"
-            name="taskName"
+        <Tooltip title="Search By Task Name">
+          <div>
+            <input
+              id="taskName"
+              name="taskName"
+              className="px-5 py-2 text-[#18181B] bg-white placeholder-gray-400 hover:bg-white rounded-md text-base font-medium outline-none border-[1px] border-gray-300"
+              type="text"
+              placeholder="Search Task Name"
+              value={searchQuery}
+              onChange={handleSearchInputChange}
+            />
+          </div>
+        </Tooltip>
+        <Tooltip title="Filter By Status">
+          <div>
+            <select
+              className="px-5 py-2 text-[#18181B] bg-white placeholder-gray-400 hover:bg-white rounded-md text-base font-medium outline-none border-[1px] border-gray-300"
+              name="status"
+              id="status"
+              value={status}
+              onChange={handleStatusChange}
+            >
+              <option value="" defaultChecked>
+                Select Status
+              </option>
+              <option value="incomplete">Incomplete</option>
+              <option value="in progress">In Progress</option>
+              <option value="done">Done</option>
+            </select>
+          </div>
+        </Tooltip>
+        <Tooltip title="Filter By Deadline">
+          <DatePicker
             className="px-5 py-2 text-[#18181B] bg-white placeholder-gray-400 hover:bg-white rounded-md text-base font-medium outline-none border-[1px] border-gray-300"
-            type="text"
-            placeholder="Search Task Name"
-            value={searchQuery}
-            onChange={handleSearchInputChange}
+            onChange={handleDateChange}
           />
-        </div>
-        <div>
-          <select
-            className="px-5 py-2 text-[#18181B] bg-white placeholder-gray-400 hover:bg-white rounded-md text-base font-medium outline-none border-[1px] border-gray-300"
-            name="status"
-            id="status"
-            value={status}
-            onChange={handleStatusChange}
-          >
-            <option value="" defaultChecked>
-              Select Status
-            </option>
-            <option value="incomplete">Incomplete</option>
-            <option value="in progress">In Progress</option>
-            <option value="done">Done</option>
-          </select>
-        </div>
-        <DatePicker
-          className="px-5 py-2 text-[#18181B] bg-white placeholder-gray-400 hover:bg-white rounded-md text-base font-medium outline-none border-[1px] border-gray-300"
-          onChange={handleDateChange}
-        />
+        </Tooltip>
       </div>
 
       <div className="pt-9 overflow-x-auto sm:overflow-x-visible">
