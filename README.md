@@ -14,7 +14,7 @@ This is a project management web application built with Next.js, Zustand, React 
   - Utilize a drag-and-drop Kanban board to manage tasks across "Incomplete," "In Progress," and "Done" stages (implemented with pure TypeScript, no external libraries are used).
 - **User Accounts (Demo):**
   - Login with sample credentials: username: "sampleuser", password: "password123".
-  - Mock data is fetched from: [https://mockserver-44khbl9gi-rubayetseasons-projects.vercel.app/projects](https://mockserver-44khbl9gi-rubayetseasons-projects.vercel.app/projects)
+  - Mock data is fetched from: [https://mockserver-ten.vercel.app/projects](https://mockserver-ten.vercel.app/projects)
 
 ## Technologies Used
 
