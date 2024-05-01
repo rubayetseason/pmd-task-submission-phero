@@ -32,48 +32,34 @@ const TasksTable = () => {
     toast.success("Task updated successfully");
   };
 
-  //date related logic
-  const [selectedDate, setSelectedDate] = useState("");
+  // Date and search logic
+  const [date, setDate] = useState("");
+  const [searchQuery, setSearchQuery] = useState("");
+  const debouncedSearchQuery = useDebounced({ searchQuery, delay: 300 });
 
-  const onChange: DatePickerProps["onChange"] = (date, dateString) => {
+  const handleDateChange: DatePickerProps["onChange"] = (date, dateString) => {
     // @ts-ignore
-    setSelectedDate(dateString);
+    setDate(dateString);
   };
-
-  // search related logic
-  const [inputValue, setInputValue] = useState("");
-
-  const debouncedSearchQuery = useDebounced({
-    searchQuery: inputValue,
-    delay: 300,
-  });
 
   const handleSearchInputChange = (event: any) => {
-    setInputValue(event.target.value);
+    setSearchQuery(event.target.value);
   };
 
-  // status filter logic
-  const [selectedStatus, setSelectedStatus] = useState("");
+  // Status filter logic
+  const [status, setStatus] = useState("");
 
-  // Function to handle status change
   const handleStatusChange = (event: any) => {
-    setSelectedStatus(event.target.value);
+    setStatus(event.target.value);
   };
 
-  // Function to filter tasks based on status
-  const filteredTasksByStatus =
-    taskData &&
-    taskData?.filter(
-      (task) => selectedStatus === "" || task.status === selectedStatus
-    );
-
-  const filteredTasks =
-    filteredTasksByStatus &&
-    filteredTasksByStatus
-      .filter((task) =>
-        task.taskName.toLowerCase().includes(debouncedSearchQuery.toLowerCase())
-      )
-      .filter((task) => selectedDate === "" || task.deadline === selectedDate);
+  // Filter tasks based on status and search query
+  const filteredTasks = taskData
+    ?.filter((task) => status === "" || task.status === status)
+    .filter((task) =>
+      task.taskName.toLowerCase().includes(debouncedSearchQuery.toLowerCase())
+    )
+    .filter((task) => date === "" || task.deadline === date);
 
   return (
     <div>
@@ -85,7 +71,7 @@ const TasksTable = () => {
             className="px-5 py-2 text-[#18181B] bg-white placeholder-gray-400 hover:bg-white rounded-md text-base font-medium outline-none border-[1px] border-gray-300"
             type="text"
             placeholder="Search Task Name"
-            value={inputValue}
+            value={searchQuery}
             onChange={handleSearchInputChange}
           />
         </div>
@@ -94,7 +80,7 @@ const TasksTable = () => {
             className="px-5 py-2 text-[#18181B] bg-white placeholder-gray-400 hover:bg-white rounded-md text-base font-medium outline-none border-[1px] border-gray-300"
             name="status"
             id="status"
-            value={selectedStatus}
+            value={status}
             onChange={handleStatusChange}
           >
             <option value="" defaultChecked>
@@ -107,7 +93,7 @@ const TasksTable = () => {
         </div>
         <DatePicker
           className="px-5 py-2 text-[#18181B] bg-white placeholder-gray-400 hover:bg-white rounded-md text-base font-medium outline-none border-[1px] border-gray-300"
-          onChange={onChange}
+          onChange={handleDateChange}
         />
       </div>
 
