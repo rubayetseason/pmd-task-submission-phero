@@ -7,12 +7,14 @@ import { useRouter } from "next/navigation";
 import Loading from "../loading";
 import Sidebar from "@/components/Dashboard/Sidebar";
 import Contents from "@/components/Dashboard/Contents";
+import { getFromLocalStorage } from "@/utils/localStorage";
 
 const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState<boolean>(false);
 
-  const isAccessTokenAvailable = localStorage.getItem("antd_token");
+
+  const isAccessTokenAvailable = getFromLocalStorage("antd_token");
 
   useEffect(() => {
     if (!isAccessTokenAvailable) {

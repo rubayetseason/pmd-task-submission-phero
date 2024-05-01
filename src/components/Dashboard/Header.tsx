@@ -1,19 +1,7 @@
-import {
-  Avatar,
-  Button,
-  Dropdown,
-  Layout,
-  MenuProps,
-  Row,
-  Space,
-  Tooltip,
-  theme,
-} from "antd";
-import { UserOutlined } from "@ant-design/icons";
+import { Layout, Row, Tooltip, theme } from "antd";
 
 const { Header: AntHeader } = Layout;
 
-import React from "react";
 import { useRouter } from "next/navigation";
 
 const Header = () => {
@@ -27,7 +15,6 @@ const Header = () => {
     localStorage.removeItem("antd_token");
     router.push("/");
   };
-
 
   return (
     <AntHeader style={{ padding: 0, background: colorBgContainer }}>

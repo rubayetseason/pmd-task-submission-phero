@@ -1,5 +1,6 @@
 "use client";
 
+import { setToLocalStorage } from "@/utils/localStorage";
 import { LockOutlined, UserOutlined, SlackOutlined } from "@ant-design/icons";
 import { Button, Checkbox, Form, Input, Tooltip } from "antd";
 import { useRouter } from "next/navigation";
@@ -11,7 +12,7 @@ const Login = () => {
   const onFinish = (values: any) => {
     if (values.username === "sampleuser" && values.password === "password123") {
       const secretToken = "secretToken123";
-      localStorage.setItem("antd_token", secretToken);
+      setToLocalStorage("antd_token", secretToken);
       toast.success("Login successful");
       router.push("/dashboard");
     } else {

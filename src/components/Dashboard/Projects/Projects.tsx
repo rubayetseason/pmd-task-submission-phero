@@ -14,7 +14,7 @@ const Projects = () => {
     queryKey: ["projects"],
     queryFn: async () => {
       const res = fetch(
-        "https://mockserver-44khbl9gi-rubayetseasons-projects.vercel.app/projects"
+        "https://mockserver-ten.vercel.app/projects"
       );
       const data = await (await res).json();
       addProject(data);

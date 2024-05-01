@@ -16,9 +16,7 @@ const SingleProject = ({ projectId }: { projectId: string }) => {
   const { data: projects, isLoading } = useQuery({
     queryKey: ["projects"],
     queryFn: async () => {
-      const res = fetch(
-        "https://mockserver-44khbl9gi-rubayetseasons-projects.vercel.app/projects"
-      );
+      const res = fetch("https://mockserver-ten.vercel.app/projects");
       const data = await (await res).json();
 
       const project = data?.find((project: ProjectType) => {
