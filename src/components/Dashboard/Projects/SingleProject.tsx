@@ -4,6 +4,7 @@ import { ProjectType } from "@/types/types";
 import { useProjectStore } from "@/zustand/projectStore";
 import { useQuery } from "@tanstack/react-query";
 import TaskManagement from "../Tasks/TaskManagement";
+import { Skeleton } from "antd";
 
 const SingleProject = ({ projectId }: { projectId: string }) => {
   const setSingleProjectToStore = useProjectStore(
@@ -30,7 +31,19 @@ const SingleProject = ({ projectId }: { projectId: string }) => {
   });
 
   if (isLoading) {
-    return <div>Loading...</div>;
+    return (
+      <div>
+        <div className="py-5">
+          <Skeleton active />
+        </div>
+        <div className="py-5">
+          <Skeleton active />
+        </div>
+        <div className="py-5">
+          <Skeleton active />
+        </div>
+      </div>
+    );
   }
 
   return (
