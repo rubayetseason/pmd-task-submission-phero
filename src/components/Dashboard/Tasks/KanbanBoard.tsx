@@ -217,6 +217,7 @@ const Card = ({
   status,
   description,
   deadline,
+  assignedMembers,
   handleDragStart,
 }: CardProps) => {
   return (
@@ -227,15 +228,26 @@ const Card = ({
         layoutId={id}
         draggable="true"
         onDragStart={(e) =>
-          handleDragStart(e, { taskName, id, status, description, deadline })
+          handleDragStart(e, {
+            taskName,
+            id,
+            status,
+            description,
+            deadline,
+            assignedMembers,
+          })
         }
         className="cursor-grab rounded border border-neutral-700 bg-neutral-800 p-3 active:cursor-grabbing"
       >
         <h1 className="pb-1 text-base font-semibold text-neutral-100">
-          Task: {taskName}
+          {taskName}
         </h1>
         <p className="text-sm text-neutral-100">{description}</p>
         <p className="text-sm text-neutral-100">Due: {deadline}</p>
+        <h1 className="pt-3 text-sm font-normal">
+          <span className="font-medium"> Assigned:</span>{" "}
+          {assignedMembers.map((member) => member).join(", ")}
+        </h1>
       </motion.div>
     </>
   );
