@@ -28,8 +28,20 @@ This is a project management web application built with Next.js, Zustand, React 
 
 **Installation:**
 
-1. Clone the repository (replace `https://your-repository-url.git` with your actual URL):
+1. Clone the repository:
 
    ```bash
-   git clone https://your-repository-url.git
+   git clone https://github.com/rubayetseason/pmd-task-submission-phero.git
    ```
+
+2. Install all dependencies:
+
+```bash
+  npm install
+```
+
+3. Start project:
+
+```bash
+  npm run dev
+```
