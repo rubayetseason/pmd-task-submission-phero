@@ -32,15 +32,13 @@ const TasksTable = () => {
     toast.success("Task updated successfully");
   };
 
+  //date related logic
   const [selectedDate, setSelectedDate] = useState("");
 
   const onChange: DatePickerProps["onChange"] = (date, dateString) => {
     // @ts-ignore
     setSelectedDate(dateString);
   };
-
-  const filteredTasksByDate =
-    selectedDate && taskData?.filter((task) => task.deadline === selectedDate);
 
   // search related logic
   const [inputValue, setInputValue] = useState("");
@@ -54,7 +52,7 @@ const TasksTable = () => {
     setInputValue(event.target.value);
   };
 
-  // status filer logic
+  // status filter logic
   const [selectedStatus, setSelectedStatus] = useState("");
 
   // Function to handle status change
