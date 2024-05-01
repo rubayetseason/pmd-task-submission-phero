@@ -1,0 +1,404 @@
+[
+  {
+    "id": "1",
+    "name": "Software Development for New Website",
+    "description": "A project aimed at developing a new website with enhanced features and functionality.",
+    "tasks": [
+      {
+        "id": "101",
+        "taskName": "Design Wireframes",
+        "status": "incomplete",
+        "description": "Create wireframes for the new website design.",
+        "deadline": "2024-05-05",
+        "assignedMembers": ["John Doe"]
+      },
+      {
+        "id": "102",
+        "taskName": "Frontend Development",
+        "status": "in progress",
+        "description": "Develop frontend components for the new website.",
+        "deadline": "2024-05-10",
+        "assignedMembers": ["Jane Smith"]
+      },
+      {
+        "id": "103",
+        "taskName": "Backend Development",
+        "status": "incomplete",
+        "description": "Implement backend functionality for the new website.",
+        "deadline": "2024-05-15",
+        "assignedMembers": ["Alice Johnson"]
+      },
+      {
+        "id": "104",
+        "taskName": "Database Integration",
+        "status": "done",
+        "description": "Integrate databases for storing website data.",
+        "deadline": "2024-05-18",
+        "assignedMembers": ["Bob Brown"]
+      },
+      {
+        "id": "105",
+        "taskName": "Testing and Debugging",
+        "status": "incomplete",
+        "description": "Conduct testing and debugging for the new website.",
+        "deadline": "2024-05-22",
+        "assignedMembers": ["Eve Taylor"]
+      },
+      {
+        "id": "106",
+        "taskName": "Deployment",
+        "status": "incomplete",
+        "description": "Deploy the new website to production servers.",
+        "deadline": "2024-05-25",
+        "assignedMembers": ["John Doe"]
+      }
+    ],
+    "teamMembers": [
+      "John Doe",
+      "Jane Smith",
+      "Alice Johnson",
+      "Bob Brown",
+      "Eve Taylor"
+    ],
+    "recentActivities": [
+      "John Doe added Design Wireframes",
+      "Jane Smith started Frontend Development",
+      "Bob Brown joined the project team"
+    ]
+  },
+  {
+    "id": "2",
+    "name": "Product Launch Campaign",
+    "description": "Planning and executing a comprehensive campaign to launch a new product in the market.",
+    "tasks": [
+      {
+        "id": "201",
+        "taskName": "Market Research",
+        "status": "in progress",
+        "description": "Conduct research to identify target market and consumer preferences.",
+        "deadline": "2024-05-12",
+        "assignedMembers": ["Alice Johnson"]
+      },
+      {
+        "id": "202",
+        "taskName": "Marketing Strategy Development",
+        "status": "in progress",
+        "description": "Develop a marketing strategy including branding, messaging, and channels.",
+        "deadline": "2024-05-18",
+        "assignedMembers": ["Bob Brown"]
+      },
+      {
+        "id": "203",
+        "taskName": "Content Creation",
+        "status": "incomplete",
+        "description": "Create engaging content for promotional materials and advertisements.",
+        "deadline": "2024-05-20",
+        "assignedMembers": ["John Doe"]
+      },
+      {
+        "id": "204",
+        "taskName": "Social Media Management",
+        "status": "done",
+        "description": "Manage social media accounts and engage with audience.",
+        "deadline": "2024-05-25",
+        "assignedMembers": ["Jane Smith"]
+      },
+      {
+        "id": "205",
+        "taskName": "Event Planning",
+        "status": "done",
+        "description": "Plan and coordinate launch events and activations.",
+        "deadline": "2024-05-30",
+        "assignedMembers": ["Eve Taylor"]
+      },
+      {
+        "id": "206",
+        "taskName": "Performance Tracking",
+        "status": "done",
+        "description": "Track and analyze campaign performance metrics to optimize strategies.",
+        "deadline": "2024-06-05",
+        "assignedMembers": ["Alice Johnson"]
+      }
+    ],
+    "teamMembers": [
+      "John Doe",
+      "Jane Smith",
+      "Alice Johnson",
+      "Bob Brown",
+      "Eve Taylor"
+    ],
+    "recentActivities": [
+      "Alice Johnson added Market Research task",
+      "John Doe added Content Creation task",
+      "Bob Brown joined the project team"
+    ]
+  },
+  {
+    "id": "3",
+    "name": "E-commerce Platform Upgrade",
+    "description": "Upgrading the existing e-commerce platform to improve user experience and add new features.",
+    "tasks": [
+      {
+        "id": "301",
+        "taskName": "Frontend Redesign",
+        "status": "incomplete",
+        "description": "Redesign the frontend interface for better usability and aesthetics.",
+        "deadline": "2024-05-14",
+        "assignedMembers": ["John Doe"]
+      },
+      {
+        "id": "302",
+        "taskName": "Backend Integration",
+        "status": "in progress",
+        "description": "Integrate new backend functionalities to enhance website performance.",
+        "deadline": "2024-05-17",
+        "assignedMembers": ["Jane Smith"]
+      },
+      {
+        "id": "303",
+        "taskName": "Database Optimization",
+        "status": "in progress",
+        "description": "Optimize database performance to handle increased traffic and transactions.",
+        "deadline": "2024-05-19",
+        "assignedMembers": ["Bob Brown"]
+      },
+      {
+        "id": "304",
+        "taskName": "Mobile App Development",
+        "status": "done",
+        "description": "Develop a mobile application to complement the e-commerce platform.",
+        "deadline": "2024-05-22",
+        "assignedMembers": ["Alice Johnson"]
+      },
+      {
+        "id": "305",
+        "taskName": "Quality Assurance Testing",
+        "status": "incomplete",
+        "description": "Conduct thorough testing to ensure the platform's functionality and reliability.",
+        "deadline": "2024-05-25",
+        "assignedMembers": ["Eve Taylor"]
+      },
+      {
+        "id": "306",
+        "taskName": "Deployment Planning",
+        "status": "incomplete",
+        "description": "Plan the deployment process to minimize disruption and ensure a smooth transition.",
+        "deadline": "2024-05-28",
+        "assignedMembers": ["John Doe"]
+      }
+    ],
+    "teamMembers": [
+      "John Doe",
+      "Jane Smith",
+      "Alice Johnson",
+      "Bob Brown",
+      "Eve Taylor"
+    ],
+    "recentActivities": [
+      "John Doe added Frontend Redesign task",
+      "Jane Smith added Backend Integration task",
+      "Alice Johnson joined the project team"
+    ]
+  },
+  {
+    "id": "4",
+    "name": "Customer Relationship Management System",
+    "description": "Implementing a CRM system to streamline customer interactions and improve business efficiency.",
+    "tasks": [
+      {
+        "id": "401",
+        "taskName": "Requirements Analysis",
+        "status": "incomplete",
+        "description": "Analyze business requirements to define functionalities needed in the CRM system.",
+        "deadline": "2024-05-20",
+        "assignedMembers": ["John Doe"]
+      },
+      {
+        "id": "402",
+        "taskName": "System Configuration",
+        "status": "incomplete",
+        "description": "Configure the CRM system according to the identified requirements and best practices.",
+        "deadline": "2024-05-22",
+        "assignedMembers": ["Jane Smith"]
+      },
+      {
+        "id": "403",
+        "taskName": "Data Migration",
+        "status": "done",
+        "description": "Migrate existing customer data from legacy systems to the new CRM platform.",
+        "deadline": "2024-05-25",
+        "assignedMembers": ["Alice Johnson"]
+      },
+      {
+        "id": "404",
+        "taskName": "User Training",
+        "status": "done",
+        "description": "Train users on how to effectively use the new CRM system for their daily tasks.",
+        "deadline": "2024-05-28",
+        "assignedMembers": ["Bob Brown"]
+      },
+      {
+        "id": "405",
+        "taskName": "Integration Testing",
+        "status": "in progress",
+        "description": "Conduct testing to ensure seamless integration of the CRM system with other business applications.",
+        "deadline": "2024-06-01",
+        "assignedMembers": ["Eve Taylor"]
+      },
+      {
+        "id": "406",
+        "taskName": "Deployment Planning",
+        "status": "in progress",
+        "description": "Plan and prepare for the deployment of the CRM system across the organization.",
+        "deadline": "2024-06-05",
+        "assignedMembers": ["John Doe"]
+      }
+    ],
+    "teamMembers": [
+      "John Doe",
+      "Jane Smith",
+      "Alice Johnson",
+      "Bob Brown",
+      "Eve Taylor"
+    ],
+    "recentActivities": [
+      "Alice Johnson added Requirements Analysis task",
+      "Jane Smith added System Configuration task",
+      "Bob Brown added Data Migration task"
+    ]
+  },
+  {
+    "id": "5",
+    "name": "Marketing Campaign Development",
+    "description": "Developing a comprehensive marketing campaign to promote a new product launch.",
+    "tasks": [
+      {
+        "id": "501",
+        "taskName": "Market Research",
+        "status": "incomplete",
+        "description": "Conduct market research to identify target audience and market trends.",
+        "deadline": "2024-05-15",
+        "assignedMembers": ["John Doe"]
+      },
+      {
+        "id": "502",
+        "taskName": "Campaign Strategy",
+        "status": "in progress",
+        "description": "Develop a strategic plan outlining the goals and approach of the marketing campaign.",
+        "deadline": "2024-05-20",
+        "assignedMembers": ["Alice Johnson"]
+      },
+      {
+        "id": "503",
+        "taskName": "Content Creation",
+        "status": "incomplete",
+        "description": "Create engaging content including advertisements, social media posts, and promotional materials.",
+        "deadline": "2024-05-25",
+        "assignedMembers": ["Jane Smith"]
+      },
+      {
+        "id": "504",
+        "taskName": "Campaign Execution",
+        "status": "incomplete",
+        "description": "Implement the marketing campaign across various channels and platforms.",
+        "deadline": "2024-05-30",
+        "assignedMembers": ["Bob Brown"]
+      },
+      {
+        "id": "505",
+        "taskName": "Performance Analysis",
+        "status": "in progress",
+        "description": "Analyze the performance of the marketing campaign and adjust strategies as needed.",
+        "deadline": "2024-06-05",
+        "assignedMembers": ["Eve Taylor"]
+      },
+      {
+        "id": "506",
+        "taskName": "Report Generation",
+        "status": "done",
+        "description": "Generate reports summarizing the effectiveness and ROI of the marketing campaign.",
+        "deadline": "2024-06-10",
+        "assignedMembers": ["John Doe"]
+      }
+    ],
+    "teamMembers": [
+      "John Doe",
+      "Jane Smith",
+      "Alice Johnson",
+      "Bob Brown",
+      "Eve Taylor"
+    ],
+    "recentActivities": [
+      "John Doe added Market Research task",
+      "Alice Johnson added Campaign Strategy task",
+      "Jane Smith joined the project team"
+    ]
+  },
+  {
+    "id": "6",
+    "name": "Supply Chain Optimization and Implementation",
+    "description": "Optimizing supply chain processes to enhance efficiency and reduce operational costs.",
+    "tasks": [
+      {
+        "id": "601",
+        "taskName": "Inventory Management",
+        "status": "in progress",
+        "description": "Implement strategies to improve inventory management and reduce stockouts.",
+        "deadline": "2024-05-18",
+        "assignedMembers": ["Bob Brown"]
+      },
+      {
+        "id": "602",
+        "taskName": "Logistics Optimization",
+        "status": "in progress",
+        "description": "Optimize transportation and logistics operations for timely deliveries and cost savings.",
+        "deadline": "2024-05-22",
+        "assignedMembers": ["John Doe"]
+      },
+      {
+        "id": "603",
+        "taskName": "Supplier Relationship Management",
+        "status": "in progress",
+        "description": "Strengthen relationships with suppliers to ensure reliability and quality of supplies.",
+        "deadline": "2024-05-25",
+        "assignedMembers": ["Jane Smith"]
+      },
+      {
+        "id": "604",
+        "taskName": "Process Automation",
+        "status": "in progress",
+        "description": "Automate manual processes to improve efficiency and reduce human errors.",
+        "deadline": "2024-05-28",
+        "assignedMembers": ["Alice Johnson"]
+      },
+      {
+        "id": "605",
+        "taskName": "Performance Monitoring",
+        "status": "done",
+        "description": "Implement systems to monitor and evaluate supply chain performance metrics.",
+        "deadline": "2024-06-01",
+        "assignedMembers": ["Eve Taylor"]
+      },
+      {
+        "id": "606",
+        "taskName": "Risk Management",
+        "status": "done",
+        "description": "Identify and mitigate risks associated with the supply chain to ensure continuity.",
+        "deadline": "2024-06-05",
+        "assignedMembers": ["John Doe"]
+      }
+    ],
+    "teamMembers": [
+      "John Doe",
+      "Jane Smith",
+      "Alice Johnson",
+      "Bob Brown",
+      "Eve Taylor"
+    ],
+    "recentActivities": [
+      "Bob Brown added Inventory Management task",
+      "Jane Smith added Logistics Optimization task",
+      "John Doe joined the project team"
+    ]
+  }
+]

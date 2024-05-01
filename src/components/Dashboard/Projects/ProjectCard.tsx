@@ -27,7 +27,7 @@ const ProjectCard = ({ project }: { project: ProjectType }) => {
   };
 
   return (
-    <div className="p-7 border-[1px] border-gray-300 rounded-md">
+    <div className="h-auto p-4 border-[1px] border-gray-300 rounded-md">
       <Tooltip title={project.name}>
         <h1 className="text-2xl font-bold">{project?.name}</h1>
       </Tooltip>

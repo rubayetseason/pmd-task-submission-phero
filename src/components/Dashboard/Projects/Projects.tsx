@@ -14,7 +14,7 @@ const Projects = () => {
     queryKey: ["projects"],
     queryFn: async () => {
       const res = fetch(
-        "https://run.mocky.io/v3/29d1866c-ffed-4f11-bed8-5f16f5c2af98"
+        "https://run.mocky.io/v3/fec04dfc-be47-4c4d-b4e6-c3c0bb09b248"
       );
       const data = await (await res).json();
       addProject(data);

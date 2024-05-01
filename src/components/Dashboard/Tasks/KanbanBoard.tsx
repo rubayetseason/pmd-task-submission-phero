@@ -382,6 +382,12 @@ const AddCard = ({ column, setCards }: AddCardProps) => {
             <option className="text-violet-300 bg-[#332E44]" value="" disabled>
               Add a member
             </option>
+            <option className="text-violet-300 bg-[#332E44]" value="John Doe">
+              John Doe
+            </option>
+            <option className="text-violet-300 bg-[#332E44]" value="Jane Smith">
+              Jane Smith
+            </option>
             <option
               className="text-violet-300 bg-[#332E44]"
               value="Alice Johnson"
@@ -391,11 +397,8 @@ const AddCard = ({ column, setCards }: AddCardProps) => {
             <option className="text-violet-300 bg-[#332E44]" value="Bob Brown">
               Bob Brown
             </option>
-            <option
-              className="text-violet-300 bg-[#332E44]"
-              value="Sai Krishna"
-            >
-              Sai Krishna
+            <option className="text-violet-300 bg-[#332E44]" value="Eve Taylor">
+              Eve Taylor
             </option>
           </select>
           <DatePicker
