@@ -20,43 +20,52 @@ const TasksTable = () => {
           Filters
         </button>
       </div>
-      <div className="pt-9">
-        <table className="table-auto w-full">
-          <thead>
-            <tr>
-              <th className="px-4 py-2 text-left text-base font-medium text-gray-500 uppercase tracking-wider">
-                Task Name
-              </th>
-              <th className="px-4 py-2 text-left text-base font-medium text-gray-500 uppercase tracking-wider">
-                Description
-              </th>
-              <th className="px-4 py-2 text-left text-base font-medium text-gray-500 uppercase tracking-wider">
-                Deadline
-              </th>
-              <th className="px-4 py-2 text-left text-base font-medium text-gray-500 uppercase tracking-wider">
-                Actions
-              </th>
-            </tr>
-          </thead>
-          <tbody>
-            {taskData &&
-              taskData.map((task: TaskType) => (
-                <tr
-                  key={task.id}
-                  className="border-b border-gray-200 hover:bg-gray-100"
-                >
-                  <td className="px-4 py-4 text-lg">{task.taskName}</td>
-                  <td className="px-4 py-4 text-lg">{task.description}</td>
-                  <td className="px-4 py-4 text-lg">{task.deadline}</td>
-                  <td className="px-4 py-4 text-lg">
-                    <button className="py-1 px-5 rounded-md text-sm font-medium bg-[#18181B] hover:bg-black text-white">
-                      Edit
-                    </button>
-                  </td>
+      <div className="pt-9 overflow-x-auto sm:overflow-x-visible">
+        {taskData && taskData.length > 0 ? (
+          <div>
+            {" "}
+            <table className="table-auto w-full">
+              <thead>
+                <tr>
+                  <th className="px-4 py-2 text-left text-base font-medium text-gray-500 uppercase tracking-wider">
+                    Task Name
+                  </th>
+                  <th className="px-4 py-2 text-left text-base font-medium text-gray-500 uppercase tracking-wider">
+                    Description
+                  </th>
+                  <th className="px-4 py-2 text-left text-base font-medium text-gray-500 uppercase tracking-wider">
+                    Deadline
+                  </th>
+                  <th className="px-4 py-2 text-left text-base font-medium text-gray-500 uppercase tracking-wider">
+                    Actions
+                  </th>
                 </tr>
-              ))}
-          </tbody>
-        </table>
+              </thead>
+              <tbody>
+                {taskData &&
+                  taskData.map((task: TaskType) => (
+                    <tr
+                      key={task.id}
+                      className="border-b border-gray-200 hover:bg-gray-100"
+                    >
+                      <td className="px-4 py-4 text-lg">{task.taskName}</td>
+                      <td className="px-4 py-4 text-lg">{task.description}</td>
+                      <td className="px-4 py-4 text-lg">{task.deadline}</td>
+                      <td className="px-4 py-4 text-lg">
+                        <button className="py-1 px-5 rounded-md text-sm font-medium bg-[#18181B] hover:bg-black text-white">
+                          Edit
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+              </tbody>
+            </table>
+          </div>
+        ) : (
+          <div>
+            <h1 className="text-xl font-bold">No tasks found</h1>
+          </div>
+        )}
       </div>
     </div>
   );
