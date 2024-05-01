@@ -7,7 +7,6 @@ type IdProps = {
 const ProjectSinglePage: React.FC<IdProps> = ({ params: { projectId } }) => {
   return (
     <div>
-      hi {projectId}
       <div>
         <SingleProject projectId={projectId} />
       </div>

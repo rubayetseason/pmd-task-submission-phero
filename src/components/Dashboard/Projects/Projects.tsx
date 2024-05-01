@@ -13,7 +13,9 @@ const Projects = () => {
   const { data: projects = [], isLoading } = useQuery({
     queryKey: ["projects"],
     queryFn: async () => {
-      const res = fetch("projects.json");
+      const res = fetch(
+        "https://run.mocky.io/v3/29d1866c-ffed-4f11-bed8-5f16f5c2af98"
+      );
       const data = await (await res).json();
       addProject(data);
       return data;
