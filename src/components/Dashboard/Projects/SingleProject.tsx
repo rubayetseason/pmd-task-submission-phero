@@ -3,6 +3,7 @@
 import { ProjectType } from "@/types/types";
 import { useProjectStore } from "@/zustand/projectStore";
 import { useQuery } from "@tanstack/react-query";
+import TaskManagement from "../Tasks/TaskManagement";
 
 const SingleProject = ({ projectId }: { projectId: string }) => {
   const setSingleProjectToStore = useProjectStore(
@@ -12,7 +13,7 @@ const SingleProject = ({ projectId }: { projectId: string }) => {
   const pr = useProjectStore((state) => state.singleProject);
 
   const { data: projects, isLoading } = useQuery({
-    queryKey: ["sample"],
+    queryKey: ["projects"],
     queryFn: async () => {
       const res = fetch(
         "https://run.mocky.io/v3/29d1866c-ffed-4f11-bed8-5f16f5c2af98"
@@ -21,8 +22,6 @@ const SingleProject = ({ projectId }: { projectId: string }) => {
       return data;
     },
   });
-
-  console.log(projects);
 
   if (isLoading) {
     return <div>Loading...</div>;
@@ -33,12 +32,30 @@ const SingleProject = ({ projectId }: { projectId: string }) => {
   });
   setSingleProjectToStore(project);
 
+  console.log(pr);
+
   return (
     <div>
       <div>
-        <h1 className="text-2xl font-bold">Project Name: {pr?.name}</h1>
-        <h1 className="text-lg font-normal text-gray-400">{pr?.description}</h1>
+        <h1 className="pb-1 text-xl font-bold">Project ID: {pr?.id}</h1>
+        <h1 className="text-3xl font-bold">Project Name: {pr?.name}</h1>
+        <h1 className="pt-4 text-lg font-normal text-gray-400">
+          {pr?.description}
+        </h1>
+        <h1 className="pt-3 text-lg font-normal">
+          <span className="font-medium"> Project Members:</span>{" "}
+          {pr?.teamMembers?.map((member) => member).join(", ")}
+        </h1>
+        <h1 className="pt-4 text-lg font-normal">
+          <span className="font-medium pb-1"> Recent Activities:</span>
+          {pr?.recentActivities?.map((activity, index) => (
+            <div className="pt-1" key={index}>
+              {index + 1}. {activity}
+            </div>
+          ))}
+        </h1>
       </div>
+      <div>{pr && <TaskManagement projectData={pr} />}</div>
     </div>
   );
 };
