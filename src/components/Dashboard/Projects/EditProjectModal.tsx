@@ -63,6 +63,7 @@ const EditProjectModal: React.FC<EditProjectModalProps> = ({
       okButtonProps={{
         style: { backgroundColor: "#18181B", color: "white" },
       }}
+      okText="Save"
     >
       <Form form={form} layout="vertical">
         <Form.Item

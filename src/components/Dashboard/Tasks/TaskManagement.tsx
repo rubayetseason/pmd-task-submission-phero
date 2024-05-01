@@ -5,6 +5,8 @@ interface ITaskProps {
 }
 
 const TaskManagement: React.FC<ITaskProps> = ({ projectData }) => {
+  console.log(projectData);
+
   return (
     <div>
       <h1 className="pt-10 pb-5 text-2xl font-bold">Task Management</h1>

@@ -32,8 +32,6 @@ const SingleProject = ({ projectId }: { projectId: string }) => {
   });
   setSingleProjectToStore(project);
 
-  console.log(pr);
-
   return (
     <div>
       <div>
