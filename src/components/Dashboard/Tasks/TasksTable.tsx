@@ -63,13 +63,13 @@ const TasksTable = () => {
 
   return (
     <div>
-      <div className="flex items-center gap-5">
+      <div className="flex flex-col md:flex-row items-start md:items-center gap-5">
         <Tooltip title="Search By Task Name">
-          <div>
+          <div className="w-full">
             <input
               id="taskName"
               name="taskName"
-              className="px-5 py-2 text-[#18181B] bg-white placeholder-gray-400 hover:bg-white rounded-md text-base font-medium outline-none border-[1px] border-gray-300"
+              className="w-full px-5 py-2 text-[#18181B] bg-white placeholder-gray-400 hover:bg-white rounded-md text-base font-medium outline-none border-[1px] border-gray-300"
               type="text"
               placeholder="Search Task Name"
               value={searchQuery}
@@ -78,9 +78,9 @@ const TasksTable = () => {
           </div>
         </Tooltip>
         <Tooltip title="Filter By Status">
-          <div>
+          <div className="w-full">
             <select
-              className="px-5 py-2 text-[#18181B] bg-white placeholder-gray-400 hover:bg-white rounded-md text-base font-medium outline-none border-[1px] border-gray-300"
+              className="w-full px-5 py-2 text-[#18181B] bg-white placeholder-gray-400 hover:bg-white rounded-md text-base font-medium outline-none border-[1px] border-gray-300"
               name="status"
               id="status"
               value={status}
@@ -96,10 +96,12 @@ const TasksTable = () => {
           </div>
         </Tooltip>
         <Tooltip title="Filter By Deadline">
+          <div className="w-full">
           <DatePicker
-            className="px-5 py-2 text-[#18181B] bg-white placeholder-gray-400 hover:bg-white rounded-md text-base font-medium outline-none border-[1px] border-gray-300"
+            className="w-full px-5 py-2 text-[#18181B] bg-white placeholder-gray-400 hover:bg-white rounded-md text-base font-medium outline-none border-[1px] border-gray-300"
             onChange={handleDateChange}
           />
+          </div>
         </Tooltip>
       </div>
 
