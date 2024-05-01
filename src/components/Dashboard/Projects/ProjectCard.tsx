@@ -27,14 +27,14 @@ const ProjectCard = ({ project }: { project: ProjectType }) => {
   };
 
   return (
-    <div className="p-5 border-[1px] border-gray-300 rounded-md">
+    <div className="p-7 border-[1px] border-gray-300 rounded-md">
       <Tooltip title={project.name}>
         <h1 className="text-2xl font-bold">{project?.name}</h1>
       </Tooltip>
-      <p className="pt-1 text-gray-500 text-base font-normal">
+      <p className="pt-2 text-gray-400 text-lg font-normal">
         {project?.description}
       </p>
-      <div className="pt-3 flex items-center gap-2">
+      <div className="pt-10 flex items-center gap-2">
         <Link href={`/dashboard/project/${project?.id}`}>
           <button className="px-4 py-2 text-white bg-[#18181B] hover:bg-black rounded-md text-base font-medium">
             View
