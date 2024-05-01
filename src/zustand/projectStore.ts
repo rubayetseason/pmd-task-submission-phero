@@ -12,6 +12,10 @@ type ProjectStoreType = {
   deleteTask: (taskId: string) => void;
   assignTaskMembers: (taskId: string, members: string[]) => void;
   editTask: (updatedTask: TaskType) => void;
+  changeTaskStatus: (
+    taskId: string,
+    status: "incomplete" | "in progress" | "done"
+  ) => void;
 };
 
 export const useProjectStore = create<ProjectStoreType>((set) => ({
@@ -92,5 +96,24 @@ export const useProjectStore = create<ProjectStoreType>((set) => ({
         };
       }
       return {}; // No action if no project selected
+    }),
+
+  changeTaskStatus: (
+    taskId: string,
+    status: "incomplete" | "in progress" | "done"
+  ) =>
+    set((state) => {
+      if (state.singleProject) {
+        const updatedTasks = state.singleProject.tasks.map((task) =>
+          task.id === taskId ? { ...task, status } : task
+        );
+        return {
+          singleProject: {
+            ...state.singleProject,
+            tasks: updatedTasks,
+          },
+        };
+      }
+      return {};
     }),
 }));

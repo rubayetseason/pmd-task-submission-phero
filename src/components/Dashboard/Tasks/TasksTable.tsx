@@ -32,15 +32,17 @@ const TasksTable = () => {
 
   return (
     <div>
-      <div className="flex items-center gap-5">
-        <h1>Filters</h1>
-        <h1>Filters</h1>
-        <h1>Filters</h1>
-        <h1>Filters</h1>
-        <button className="px-5 py-2 text-white bg-[#18181B] hover:bg-black rounded-md text-base font-medium">
-          Filters
-        </button>
-      </div>
+      <form>
+        <div className="flex items-center gap-5">
+          <h1>Filters</h1>
+          <h1>Filters</h1>
+          <h1>Filters</h1>
+          <h1>Filters</h1>
+          <button className="px-5 py-2 text-white bg-[#18181B] hover:bg-black rounded-md text-base font-medium">
+            Filters
+          </button>
+        </div>
+      </form>
       <div className="pt-9 overflow-x-auto sm:overflow-x-visible">
         {taskData && taskData.length > 0 ? (
           <div>
@@ -58,6 +60,9 @@ const TasksTable = () => {
                     Deadline
                   </th>
                   <th className="px-4 py-2 text-left text-base font-medium text-gray-500 uppercase tracking-wider">
+                    Status
+                  </th>
+                  <th className="px-4 py-2 text-left text-base font-medium text-gray-500 uppercase tracking-wider">
                     Actions
                   </th>
                 </tr>
@@ -72,6 +77,7 @@ const TasksTable = () => {
                       <td className="px-4 py-4 text-lg">{task.taskName}</td>
                       <td className="px-4 py-4 text-lg">{task.description}</td>
                       <td className="px-4 py-4 text-lg">{task.deadline}</td>
+                      <td className="px-4 py-4 text-lg">{task.status}</td>
                       <td className="px-4 py-4 text-lg">
                         <button
                           onClick={handleEditClick.bind(this, task)}

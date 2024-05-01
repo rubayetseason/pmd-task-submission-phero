@@ -71,6 +71,8 @@ const Column = ({
   status,
   setCards,
 }: ColumnProps) => {
+  const changeTaskStatus = useProjectStore((state) => state.changeTaskStatus);
+
   const [active, setActive] = useState(false);
 
   const handleDragStart = (e: DragEvent, card: TaskType) => {
@@ -93,7 +95,9 @@ const Column = ({
 
       let cardToTransfer = copy.find((c) => c.id === cardId);
       if (!cardToTransfer) return;
+
       cardToTransfer = { ...cardToTransfer, status };
+      changeTaskStatus(cardId, status);
 
       copy = copy.filter((c) => c.id !== cardId);
 
