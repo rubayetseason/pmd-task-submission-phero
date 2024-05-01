@@ -11,6 +11,10 @@ import { FiPlus, FiTrash } from "react-icons/fi";
 import { motion } from "framer-motion";
 import { FaFire } from "react-icons/fa";
 import { ProjectType, TaskType } from "@/types/types";
+import { DatePicker } from "antd";
+
+import type { DatePickerProps } from "antd";
+import { toast } from "sonner";
 
 interface ITaskProps {
   projectData: ProjectType;
@@ -207,7 +211,14 @@ type CardProps = TaskType & {
   handleDragStart: Function;
 };
 
-const Card = ({ taskName, id, status, handleDragStart }: CardProps) => {
+const Card = ({
+  taskName,
+  id,
+  status,
+  description,
+  deadline,
+  handleDragStart,
+}: CardProps) => {
   return (
     <>
       <DropIndicator beforeId={id} column={status} />
@@ -215,10 +226,16 @@ const Card = ({ taskName, id, status, handleDragStart }: CardProps) => {
         layout
         layoutId={id}
         draggable="true"
-        onDragStart={(e) => handleDragStart(e, { taskName, id, status })}
+        onDragStart={(e) =>
+          handleDragStart(e, { taskName, id, status, description, deadline })
+        }
         className="cursor-grab rounded border border-neutral-700 bg-neutral-800 p-3 active:cursor-grabbing"
       >
-        <p className="text-sm text-neutral-100">{taskName}</p>
+        <h1 className="pb-1 text-base font-semibold text-neutral-100">
+          Task: {taskName}
+        </h1>
+        <p className="text-sm text-neutral-100">{description}</p>
+        <p className="text-sm text-neutral-100">Due: {deadline}</p>
       </motion.div>
     </>
   );
@@ -288,31 +305,86 @@ const AddCard = ({ column, setCards }: AddCardProps) => {
   const [text, setText] = useState("");
   const [adding, setAdding] = useState(false);
 
-  const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
+  const [selectedDate, setSelectedDate] = useState("");
+
+  const onChange: DatePickerProps["onChange"] = (date, dateString) => {
+    // @ts-ignore
+    setSelectedDate(dateString);
+  };
+
+  console.log(selectedDate);
+
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    if (!text.trim().length) return;
+    const form = e.currentTarget;
 
-    const newCard = {
-      column,
-      title: text.trim(),
+    const taskName = form.taskName.value;
+    const description = form.description.value;
+    const status = column;
+    const deadline = selectedDate;
+    const assignedMembers = [form.assignedMembers.value];
+
+    const taskData: TaskType = {
+      taskName,
+      description,
+      status,
+      deadline,
+      assignedMembers,
       id: Math.random().toString(),
     };
 
-    setCards((pv) => [...pv, newCard]);
+    console.log(taskData, column);
+    setCards((pv) => [...pv, taskData]);
+    toast.success("Task added successfully");
 
     setAdding(false);
   };
-
   return (
     <>
       {adding ? (
         <motion.form layout onSubmit={handleSubmit}>
-          <textarea
-            onChange={(e) => setText(e.target.value)}
+          <input
+            id="taskName"
+            name="taskName"
             autoFocus
-            placeholder="Add new task..."
+            placeholder="Enter task name"
             className="w-full rounded border border-violet-400 bg-violet-400/20 p-3 text-sm text-neutral-50 placeholder-violet-300 focus:outline-0"
+          />
+          <input
+            id="description"
+            name="description"
+            autoFocus
+            placeholder="Enter task description"
+            className="w-full rounded border border-violet-400 bg-violet-400/20 p-3 text-sm text-neutral-50 placeholder-violet-300 focus:outline-0"
+          />
+          <select
+            id="assignedMembers"
+            name="assignedMembers"
+            className="w-full rounded border border-violet-400 bg-violet-400/20 p-3 text-sm text-violet-300  placeholder-violet-300 focus:outline-0"
+          >
+            <option className="text-violet-300 bg-[#332E44]" value="" disabled>
+              Add a member
+            </option>
+            <option
+              className="text-violet-300 bg-[#332E44]"
+              value="Alice Johnson"
+            >
+              Alice Johnson
+            </option>
+            <option className="text-violet-300 bg-[#332E44]" value="Bob Brown">
+              Bob Brown
+            </option>
+            <option
+              className="text-violet-300 bg-[#332E44]"
+              value="Sai Krishna"
+            >
+              Sai Krishna
+            </option>
+          </select>
+          <DatePicker
+            className="w-full rounded border border-violet-400 bg-violet-400/20 p-3 text-sm text-white  placeholder-white hover:bg-violet-400/20 hover:outline-0 focus:outline-0"
+            onChange={onChange}
           />
           <div className="mt-1.5 flex items-center justify-end gap-1.5">
             <button
