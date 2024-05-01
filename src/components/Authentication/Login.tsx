@@ -6,8 +6,7 @@ import { toast } from "sonner";
 
 const Login = () => {
   const onFinish = (values: any) => {
-    console.log("Received values of form: ", values);
-
+    
     if (values.username === "sampleuser" && values.password === "password123") {
       window.location.href = "/dashboard";
     } else {

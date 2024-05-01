@@ -22,7 +22,7 @@ const ProjectCard = ({ project }: { project: ProjectType }) => {
   };
 
   const handleProjectSubmit = (updatedProject: ProjectType) => {
-    console.log("Submitted project data:", updatedProject);
+    
     updateProject(updatedProject);
   };
 

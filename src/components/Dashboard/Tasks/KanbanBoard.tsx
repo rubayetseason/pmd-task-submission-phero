@@ -17,7 +17,7 @@ interface ITaskProps {
 
 export const KanbanBoard: React.FC<ITaskProps> = ({ projectData }) => {
   return (
-    <div className="h-screen w-full bg-neutral-900 text-neutral-50">
+    <div className="h-screen w-full bg-[#18181B] text-neutral-50">
       <Board projectData={projectData} />
     </div>
   );
@@ -316,7 +316,6 @@ const AddCard = ({ column, setCards }: AddCardProps) => {
 
   const pr = useProjectStore((state) => state.singleProject);
   const addTask = useProjectStore((state) => state.addTask);
-  console.log(pr);
 
   const [selectedDate, setSelectedDate] = useState("");
 
@@ -345,7 +344,6 @@ const AddCard = ({ column, setCards }: AddCardProps) => {
       id: Math.random().toString(),
     };
 
-    console.log(taskData, column);
     setCards((pv) => [...pv, taskData]);
     addTask(taskData);
     toast.success("Task added successfully");
