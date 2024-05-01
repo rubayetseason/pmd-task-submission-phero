@@ -2,12 +2,33 @@
 
 import { TaskType } from "@/types/types";
 import { useProjectStore } from "@/zustand/projectStore";
+import TaskEditModal from "./TaskEditModal";
+import { useState } from "react";
+import { toast } from "sonner";
 
 const TasksTable = () => {
+  const editTask = useProjectStore((state) => state.editTask);
   const singleProject = useProjectStore((state) => state.singleProject);
 
+  const [selectedTask, setSelectedTask] = useState<TaskType | null>(null);
+
   const taskData = singleProject?.tasks;
-  console.log(taskData);
+
+  const [open, setOpen] = useState(false);
+
+  const showModal = () => {
+    setOpen(true);
+  };
+
+  const handleEditClick = (task: TaskType) => {
+    showModal();
+    setSelectedTask(task);
+  };
+
+  const handleProjectSubmit = (updatedProject: TaskType) => {
+    editTask(updatedProject);
+    toast.success("Task updated successfully");
+  };
 
   return (
     <div>
@@ -52,7 +73,10 @@ const TasksTable = () => {
                       <td className="px-4 py-4 text-lg">{task.description}</td>
                       <td className="px-4 py-4 text-lg">{task.deadline}</td>
                       <td className="px-4 py-4 text-lg">
-                        <button className="py-1 px-5 rounded-md text-sm font-medium bg-[#18181B] hover:bg-black text-white">
+                        <button
+                          onClick={handleEditClick.bind(this, task)}
+                          className="py-1 px-5 rounded-md text-sm font-medium bg-[#18181B] hover:bg-black text-white"
+                        >
                           Edit
                         </button>
                       </td>
@@ -67,6 +91,14 @@ const TasksTable = () => {
           </div>
         )}
       </div>
+      {selectedTask && (
+        <TaskEditModal
+          open={open}
+          setOpen={setOpen}
+          task={selectedTask}
+          onSubmit={handleProjectSubmit}
+        />
+      )}
     </div>
   );
 };
