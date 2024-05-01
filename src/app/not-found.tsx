@@ -6,7 +6,7 @@ const NotFoundPage = () => {
 
   return (
     <div className="flex flex-col justify-center items-center h-screen">
-      <h2 className="text-2xl font-bold">Page not found!</h2>
+      <h2 className="py-2 text-2xl font-bold">Page not found!</h2>
       <button
         onClick={() => {
           router.push("/dashboard");
