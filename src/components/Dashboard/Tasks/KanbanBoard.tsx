@@ -1,20 +1,15 @@
 "use client";
 
-import React, {
-  Dispatch,
-  SetStateAction,
-  useState,
-  DragEvent,
-  FormEvent,
-} from "react";
-import { FiPlus, FiTrash } from "react-icons/fi";
-import { motion } from "framer-motion";
-import { FaFire } from "react-icons/fa";
 import { ProjectType, TaskType } from "@/types/types";
 import { DatePicker } from "antd";
+import { motion } from "framer-motion";
+import React, { Dispatch, DragEvent, SetStateAction, useState } from "react";
+import { FaFire } from "react-icons/fa";
+import { FiPlus, FiTrash } from "react-icons/fi";
 
 import type { DatePickerProps } from "antd";
 import { toast } from "sonner";
+import { useProjectStore } from "@/zustand/projectStore";
 
 interface ITaskProps {
   projectData: ProjectType;
@@ -273,6 +268,8 @@ const BurnBarrel = ({
 }: {
   setCards: Dispatch<SetStateAction<TaskType[]>>;
 }) => {
+  const deleteTask = useProjectStore((state) => state.deleteTask);
+
   const [active, setActive] = useState(false);
 
   const handleDragOver = (e: DragEvent) => {
@@ -288,7 +285,8 @@ const BurnBarrel = ({
     const cardId = e.dataTransfer.getData("cardId");
 
     setCards((pv) => pv.filter((c) => c.id !== cardId));
-
+    deleteTask(cardId);
+    toast.success("Task deleted successfully");
     setActive(false);
   };
 
@@ -314,8 +312,11 @@ type AddCardProps = {
 };
 
 const AddCard = ({ column, setCards }: AddCardProps) => {
-  const [text, setText] = useState("");
   const [adding, setAdding] = useState(false);
+
+  const pr = useProjectStore((state) => state.singleProject);
+  const addTask = useProjectStore((state) => state.addTask);
+  console.log(pr);
 
   const [selectedDate, setSelectedDate] = useState("");
 
@@ -323,8 +324,6 @@ const AddCard = ({ column, setCards }: AddCardProps) => {
     // @ts-ignore
     setSelectedDate(dateString);
   };
-
-  console.log(selectedDate);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -348,6 +347,7 @@ const AddCard = ({ column, setCards }: AddCardProps) => {
 
     console.log(taskData, column);
     setCards((pv) => [...pv, taskData]);
+    addTask(taskData);
     toast.success("Task added successfully");
 
     setAdding(false);
