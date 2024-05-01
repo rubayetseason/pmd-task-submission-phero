@@ -14,7 +14,7 @@ const Projects = () => {
     queryKey: ["projects"],
     queryFn: async () => {
       const res = fetch(
-        "https://run.mocky.io/v3/fec04dfc-be47-4c4d-b4e6-c3c0bb09b248"
+        "https://mockserver-44khbl9gi-rubayetseasons-projects.vercel.app/projects"
       );
       const data = await (await res).json();
       addProject(data);
