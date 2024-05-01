@@ -5,6 +5,7 @@ import { useProjectStore } from "@/zustand/projectStore";
 import TaskEditModal from "./TaskEditModal";
 import { useState } from "react";
 import { toast } from "sonner";
+import { DatePicker, DatePickerProps } from "antd";
 
 const TasksTable = () => {
   const editTask = useProjectStore((state) => state.editTask);
@@ -30,14 +31,41 @@ const TasksTable = () => {
     toast.success("Task updated successfully");
   };
 
+  const [selectedDate, setSelectedDate] = useState("");
+
+  const onChange: DatePickerProps["onChange"] = (date, dateString) => {
+    // @ts-ignore
+    setSelectedDate(dateString);
+  };
+
   return (
     <div>
       <form>
         <div className="flex items-center gap-5">
-          <h1>Filters</h1>
-          <h1>Filters</h1>
-          <h1>Filters</h1>
-          <h1>Filters</h1>
+          <div>
+            <input
+              id="taskName"
+              name="taskName"
+              className="px-5 py-2 text-[#18181B] bg-white placeholder-gray-400 hover:bg-white rounded-md text-base font-medium outline-none border-[1px] border-gray-300"
+              type="text"
+              placeholder="Search Task Name"
+            />
+          </div>
+          <div>
+            <select
+              className="px-5 py-2 text-[#18181B] bg-white placeholder-gray-400 hover:bg-white rounded-md text-base font-medium outline-none border-[1px] border-gray-300"
+              name="status"
+              id="status"
+            >
+              <option value="incomplete">Incomplete</option>
+              <option value="in progress">In Progress</option>
+              <option value="done">Done</option>
+            </select>
+          </div>
+          <DatePicker
+            className="px-5 py-2 text-[#18181B] bg-white placeholder-gray-400 hover:bg-white rounded-md text-base font-medium outline-none border-[1px] border-gray-300"
+            onChange={onChange}
+          />
           <button className="px-5 py-2 text-white bg-[#18181B] hover:bg-black rounded-md text-base font-medium">
             Filters
           </button>
