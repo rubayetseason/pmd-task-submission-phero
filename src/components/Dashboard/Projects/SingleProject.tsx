@@ -19,6 +19,12 @@ const SingleProject = ({ projectId }: { projectId: string }) => {
         "https://run.mocky.io/v3/29d1866c-ffed-4f11-bed8-5f16f5c2af98"
       );
       const data = await (await res).json();
+
+      const project = data?.find((project: ProjectType) => {
+        return project.id === projectId;
+      });
+      setSingleProjectToStore(project);
+
       return data;
     },
   });
@@ -26,11 +32,6 @@ const SingleProject = ({ projectId }: { projectId: string }) => {
   if (isLoading) {
     return <div>Loading...</div>;
   }
-
-  const project = projects?.find((project: ProjectType) => {
-    return project.id === projectId;
-  });
-  setSingleProjectToStore(project);
 
   return (
     <div>
